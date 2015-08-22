@@ -33,6 +33,11 @@
 													 Vehicules
 												</a>
 											</li>
+                                                                                        <li>
+												<a href="${pageContext.request.contextPath}/chauffeurs">
+													 Chauffeurs
+												</a>
+											</li>
 											
 										</ul>
 									</li>
