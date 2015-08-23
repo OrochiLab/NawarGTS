@@ -22,15 +22,39 @@ public class PointInteret {
     @Id
     @GeneratedValue
     private int id;
-    @Column(name="nom",nullable=false,length=255)
+    @Column(name="nom",nullable=false,length=100)
     private String nom;
     @Column(name="adresse",nullable=false,length=255)
     private String adresse;
-    @Column(name="iconne",nullable=false,length=255)
+    @Column(name="iconne",nullable=true,length=255)
     private String icone;
     @Column(name="description",nullable=false,length=255)
     private String description;
+    @Column(name="latitude",nullable=false)
+    private double latitude;
+    @Column(name="longitude",nullable=false)
+    private double longitude;
 
+    
+    
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    
+    
     public int getId() {
         return id;
     }
@@ -69,6 +93,11 @@ public class PointInteret {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "PointInteret{" + "id=" + id + ", nom=" + nom + ", adresse=" + adresse + ", icone=" + icone + ", description=" + description + ", latitude=" + latitude + ", longitude=" + longitude + '}';
     }
     
     

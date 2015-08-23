@@ -16,6 +16,8 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/vues/assets/vendor/magnific-popup/magnific-popup.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/vues/assets/vendor/bootstrap-datepicker/css/datepicker3.css" />
 
+                <!-- Specific Page Vendor CSS -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/vues/assets/vendor/pnotify/pnotify.custom.css" />
 		<!-- Theme CSS -->
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/vues/assets/stylesheets/theme.css" />
 

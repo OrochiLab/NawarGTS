@@ -12,7 +12,7 @@
 
         <section role="main" class="content-body">
             <header class="page-header">
-                <h2>Ajouter un véhicule</h2>
+                <h2>Editer un véhicule</h2>
 
                 <div class="right-wrapper pull-right">
                     <ol class="breadcrumbs">
@@ -22,7 +22,7 @@
                                 </a>
                         </li>
                         <li><span>Vehicules</span></li>
-                        <li><span>Ajouter</span></li>
+                        <li><span>Editer</span></li>
 
                     </ol>
 
@@ -50,7 +50,7 @@
 
                                             </div>
 
-                                            <h2 class="panel-title">Ajouter un véhicule</h2>
+                                            <h2 class="panel-title">Editer un véhicule</h2>
                                     </header>
                                     <div class="panel-body">
                                             <c:if test="${(not empty vehicule) && vehicule.id!=0}">
