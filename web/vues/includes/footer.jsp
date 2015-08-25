@@ -1,6 +1,6 @@
                         
                         <!-- Specific Page Vendor -->
-			<script src="https://maps.googleapis.com/maps/api/js"></script>
+			<!--<script src="https://maps.googleapis.com/maps/api/js"></script>-->
                         
 			<!-- Vendor -->
 			<script src="${pageContext.request.contextPath}/vues/assets/vendor/jquery/jquery.js"></script>
@@ -12,6 +12,7 @@
 			<script src="${pageContext.request.contextPath}/vues/assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
 			
                         <script src="${pageContext.request.contextPath}/vues/assets/vendor/pnotify/pnotify.custom.js"></script>
+                        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script>
 			<script src="${pageContext.request.contextPath}/vues/assets/vendor/gmaps/gmaps.js"></script>
                         
 			<!-- Theme Base, Components and Settings -->

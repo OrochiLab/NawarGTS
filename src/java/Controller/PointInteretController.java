@@ -28,6 +28,16 @@ public class PointInteretController {
     private PointInteretDAO pointsInteretDao;
     
     
+    @RequestMapping("/pointsInteret")
+    public ModelAndView getPage()
+    {
+        String[] iconnes = {"regroup.png","embassy.png","fooddelivery.png","hotel_0star.png","house.png","library.png","mall.png","newsagent.png","computers.png","restaurant.png","tools.png","villa.png","workoffice.png","apartment-3.png"};
+        ModelAndView model = new ModelAndView("pointsInteret");
+        model.addObject("iconnes",iconnes);
+        return model;
+    }
+    
+    
     @RequestMapping("/json/points")
     @ResponseBody
     public List<PointInteret> getPoints()
@@ -36,12 +46,27 @@ public class PointInteretController {
     }
     
     
-    @RequestMapping(value="/json/save",method=RequestMethod.PUT)
+    @RequestMapping(value="/json/points/save",method=RequestMethod.PUT)
     @ResponseBody
-    public PointInteret save(@RequestBody PointInteret point)
+    public PointInteret[] save(@RequestBody PointInteret[] points)
     {
-        System.out.println("Point : "+point);
-        pointsInteretDao.saveOrUpdate(point);
-        return point;
+        for(PointInteret point : points)
+        {
+            //System.out.println("Point : "+point);
+            pointsInteretDao.saveOrUpdate(point);
+        }
+        return points;
+    }
+    
+    @RequestMapping(value="/json/points/delete",method=RequestMethod.DELETE)
+    @ResponseBody
+    public PointInteret[] delete(@RequestBody PointInteret[] points)
+    {
+        for(PointInteret point : points)
+        {
+            //System.out.println("Point : "+point);
+            pointsInteretDao.remove(point.getId());
+        }
+        return points;
     }
 }

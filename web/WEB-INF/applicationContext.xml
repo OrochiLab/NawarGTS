@@ -26,6 +26,8 @@
                 <value>Metier.Groupe</value>
                 <value>Metier.Vehicule</value>
                 <value>Metier.PointInteret</value>
+                <value>Metier.Position</value>
+                
             </list>
         </property>
         <property name="hibernateProperties">

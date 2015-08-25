@@ -64,7 +64,7 @@
 							<div class="dropdown-menu notification-menu">
 								<div class="notification-title">
 									<span class="pull-right label label-default">3</span>
-									Alerts
+									Notifications
 								</div>
 			
 								<div class="content">
@@ -74,8 +74,8 @@
 												<div class="image">
 													<i class="fa fa-thumbs-down bg-danger"></i>
 												</div>
-												<span class="title">Server is Down!</span>
-												<span class="message">Just now</span>
+												<span class="title">Texte!</span>
+												<span class="message">Texte</span>
 											</a>
 										</li>
 										<li>
@@ -83,8 +83,8 @@
 												<div class="image">
 													<i class="fa fa-lock bg-warning"></i>
 												</div>
-												<span class="title">User Locked</span>
-												<span class="message">15 minutes ago</span>
+												<span class="title">Texte</span>
+												<span class="message">Texte</span>
 											</a>
 										</li>
 										<li>
@@ -92,8 +92,8 @@
 												<div class="image">
 													<i class="fa fa-signal bg-success"></i>
 												</div>
-												<span class="title">Connection Restaured</span>
-												<span class="message">10/10/2014</span>
+												<span class="title">Texte</span>
+												<span class="message">Texte</span>
 											</a>
 										</li>
 									</ul>
@@ -101,7 +101,7 @@
 									<hr />
 			
 									<div class="text-right">
-										<a href="#" class="view-more">View All</a>
+										<a href="#" class="view-more">Afficher tout</a>
 									</div>
 								</div>
 							</div>
@@ -116,7 +116,7 @@
 								<img src="${pageContext.request.contextPath}/vues/assets/images/!logged-user.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
 							</figure>
 							<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
-								<span class="name">John Doe Junior</span>
+								<span class="name">Morabit Mouad</span>
 								<span class="role">Administrateur</span>
 							</div>
 			
@@ -127,10 +127,10 @@
 							<ul class="list-unstyled">
 								<li class="divider"></li>
 								<li>
-									<a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fa fa-user"></i> My Profile</a>
+									<a role="menuitem" tabindex="-1" href="#"><i class="fa fa-user"></i> Mon profil</a>
 								</li>
 								<li>
-									<a role="menuitem" tabindex="-1" href="pages-signin.html"><i class="fa fa-power-off"></i> Logout</a>
+									<a role="menuitem" tabindex="-1" href="#"><i class="fa fa-power-off"></i> Se deconnecter</a>
 								</li>
 							</ul>
 						</div>

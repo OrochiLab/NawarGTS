@@ -24,8 +24,8 @@
 									
 									<li class="nav-parent">
 										<a>
-											<i class="fa fa-tasks" aria-hidden="true"></i>
-											<span>Administration</span>
+                                                                                    <i class="fa fa-tasks" aria-hidden="true"></i>
+                                                                                    <span>Administration</span>
 										</a>
 										<ul class="nav nav-children">
 											<li>
@@ -38,9 +38,16 @@
 													 Groupes
 												</a>
 											</li>
-                                                                                        
-                                                                                        
-											
+                                                                                        <li>
+												<a href="${pageContext.request.contextPath}/chauffeurs">
+													 Chauffeurs
+												</a>
+											</li>	
+                                                                                        <li>
+												<a href="${pageContext.request.contextPath}/pointsInteret">
+													 Points d'interêt
+												</a>
+											</li>
 										</ul>
 									</li>
 									
@@ -51,15 +58,11 @@
 										</a>
 										<ul class="nav nav-children">
 											<li>
-												<a href="#">
-													 Véhicules
+												<a href="${pageContext.request.contextPath}/emplacements">
+													 Emplacements/Positions
 												</a>
 											</li>
-											<li>
-												<a href="#">
-													 Trajets
-												</a>
-											</li>
+											
 											
 										</ul>
 									</li>

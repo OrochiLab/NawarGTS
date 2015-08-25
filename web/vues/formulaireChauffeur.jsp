@@ -36,7 +36,7 @@
                             <section class="panel">
                                 
                                
-                                <form:form class="form-horizontal form-bordered" method="post" action="${pageContext.request.contextPath}/ajouterChauffeur" commandName="vehicule">    
+                                <form:form class="form-horizontal form-bordered" method="post" action="${pageContext.request.contextPath}/ajouterChauffeur" commandName="chauffeur">    
                                     <c:if test="${not empty erreur}">
                                         <div class="alert alert-danger">
                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
