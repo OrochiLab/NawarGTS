@@ -5,7 +5,8 @@
  */
 package Dao;
 
-import Metier.Vehicule;
+import Metier.Permission;
+import Metier.Utilisateur;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,35 +17,37 @@ import org.springframework.stereotype.Repository;
  *
  * @author Yunho
  */
-@Repository("vehiculeDao")
-public class VehiculeDAOImpl implements VehiculeDAO{
+@Repository("utilisateurDao")
+public class UtilisateurDAOImpl implements UtilisateurDAO{
 
     @Autowired
     private SessionFactory factory;
+    @Autowired
+    private PermissionDAO permissionDao;
     
     @Override
-    public List<Vehicule> getAll() {
+    public List<Utilisateur> getAll() {
         Session session = factory.openSession();
         session.beginTransaction();
-        List<Vehicule> liste = session.createQuery("from Vehicule").list();
+        List<Utilisateur> liste = session.createQuery("from Utilisateur").list();
         session.close();
         return liste;
     }
 
     @Override
-    public Vehicule getById(int id) {
+    public Utilisateur getById(int id) {
         Session session = factory.openSession();
         session.beginTransaction();
-        Vehicule vehicule = (Vehicule)session.get(Vehicule.class, id);
+        Utilisateur utilisateur = (Utilisateur)session.get(Utilisateur.class, id);
         session.close();
-        return vehicule;
+        return utilisateur;
     }
 
     @Override
-    public void saveOrUpdate(Vehicule vehicule) {
+    public void saveOrUpdate(Utilisateur utilisateur) {
         Session session = factory.openSession();
         session.beginTransaction();
-        session.saveOrUpdate(vehicule);
+        session.saveOrUpdate(utilisateur);
         session.getTransaction().commit();
         session.close();
     }
@@ -59,15 +62,28 @@ public class VehiculeDAOImpl implements VehiculeDAO{
     }
 
     @Override
-    public Vehicule getVehiculeByPass(String matricule, String password) {
+    public Utilisateur getUserByLogin(String compte, String password) {
         Session session = factory.openSession();
         session.beginTransaction();
-        Vehicule vehicule = (Vehicule)session.createQuery("from Vehicule where (matricule=:mat and password=:pass)")
-                .setParameter("mat", matricule)
-                .setParameter("pass", password)
+        Utilisateur utilisateur = (Utilisateur) session.createQuery("from Utilisateur where compte=:compte and password=:password")
+                .setParameter("compte", compte)
+                .setParameter("password", password)
                 .uniqueResult();
         session.close();
-        return vehicule;
+        return utilisateur;
+    }
+
+    @Override
+    public void persist(Utilisateur user) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        for(int i=0;i<user.getPermissions().size();i++)
+        {
+            user.getPermissions().set(i, permissionDao.getById(user.getPermissions().get(i).getId()));
+        }
+        session.persist(user);
+        session.getTransaction().commit();
+        session.close();
     }
     
 }

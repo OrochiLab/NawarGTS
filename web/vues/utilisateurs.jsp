@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
@@ -10,9 +9,10 @@
         <jsp:include page="includes/nav.jsp" >
             <jsp:param name="bloc" value="administration" />
         </jsp:include>
+
             <section role="main" class="content-body">
                     <header class="page-header">
-                            <h2>Gestion des véhicules</h2>
+                        <h2>Gestion des utilisateurs & permissions</h2>
 
                             <div class="right-wrapper pull-right">
                                     <ol class="breadcrumbs">
@@ -22,14 +22,15 @@
                                                     </a>
                                             </li>
                                             <li><span>Administration</span></li>
-                                            <li><span>Véhicules</span></li>
+                                            <li><span>Utilisateurs</span></li>
+                                            
                                     </ol>
 
                                     <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
                             </div>
                     </header>
-
-                    <!-- start: page -->
+                
+                <!-- start: page -->
                     <div class="row">
                                     <div class="col-lg-12">
                                             <section class="panel">
@@ -40,57 +41,51 @@
                                                         <strong><c:out value="${message}"/></strong>
                                                     </div>
                                                 </c:if>
-                                                    <header class="panel-heading">
+                                                 <header class="panel-heading">
                                                             <div class="panel-actions">
                                                                     <a href="#" class="fa fa-caret-down"></a>
                                                             </div>
 
-                                                            <h2 class="panel-title">Liste des véhicules</h2>
+                                                            <h2 class="panel-title">Liste des Utilisateurs</h2>
                                                     </header>
                                                     <div class="panel-body">
                                                             <div class="row">
                                                                 <div class="col-sm-2">
                                                                         <div class="mb-md">
-                                                                            <a class="btn btn-primary" href="${pageContext.request.contextPath}/editerVehicule">Ajouter <i class="fa fa-plus"></i></a>
+                                                                            <a class="btn btn-primary" href="${pageContext.request.contextPath}/editerUtilisateur">Ajouter <i class="fa fa-plus"></i></a>
                                                                         </div>
                                                                 </div>
                                                             </div>
                                                             <div class="table-responsive">
-                                                                    
-                                                                    <table class="table table-striped mb-none">
+                                                                 <table class="table table-striped mb-none">
                                                                             <thead>
                                                                                     <tr>
-                                                                                            <th>#</th>
-                                                                                            <th>Intitule</th>
-                                                                                            <th>Matricule</th>
-                                                                                            <th>Modèle</th>
-                                                                                            <th>Type</th>
-                                                                                            <th>Groupe</th>
-                                                                                            <th>Chauffeur</th>
+                                                                                            <th>Compte</th>
+                                                                                            <th>Nom</th>
+                                                                                            <th>Prenom</th>
+                                                                                            <th>Télephone</th>
+                                                                                            <th>E-mail</th>
                                                                                             <th>Actions</th>
                                                                                     </tr>
                                                                             </thead>
                                                                             <tbody>
-                                                                                <c:forEach items="${vehicules}" var="vehicule">
+                                                                                 <c:forEach items="${utilisateurs}" var="utilisateur">
                                                                                     <tr>
-                                                                                            <td>${vehicule.id}</td>
-                                                                                            <td>${vehicule.intitule}</td>
-                                                                                            <td>${vehicule.matricule}</td>
-                                                                                            <td>${vehicule.modele}</td>
-                                                                                            <td>${vehicule.type}</td>
-                                                                                            <td>${vehicule.groupe.nom}</td>
-                                                                                            <td>${vehicule.chauffeur.nom} ${vehicule.chauffeur.prenom}</td>
-                                                                                            
+                                                                                            <td>${utilisateur.compte}</td>
+                                                                                            <td>${utilisateur.nom}</td>
+                                                                                            <td>${utilisateur.prenom}</td>
+                                                                                            <td>${utilisateur.tel}</td>
+                                                                                            <td>${utilisateur.email}</td>
                                                                                             <td class="actions-hover">
-                                                                                                <a href="${pageContext.request.contextPath}/editerVehicule?id=${vehicule.id}"><i class="fa fa-pencil"></i></a>
-                                                                                                <a data-toggle="modal" data-target="#confirmSuppression" data-vehicule-id="${vehicule.id}" class="mb-xs mt-xs mr-xs delete-row" style="cursor:pointer;"><i class="fa fa-trash-o"></i></a>
+                                                                                                <a href="${pageContext.request.contextPath}/editerUtilisateur?id=${utilisateur.id}"><i class="fa fa-pencil"></i></a>
+                                                                                                <a data-toggle="modal" data-target="#confirmSuppression" data-utilisateur-id="${utilisateur.id}" class="mb-xs mt-xs mr-xs delete-row" style="cursor:pointer;"><i class="fa fa-trash-o"></i></a>
                                                                                             </td>
                                                                                             
                                                                                     </tr>
                                                                                 </c:forEach>
                                                                             </tbody>
                                                                     </table>
-                                                            </div>
+                                                                 </div>
                                                         </div>
                                             </section>
                                     </div>
@@ -99,28 +94,6 @@
             </section>
     </div>
 
-    <aside id="sidebar-right" class="sidebar-right">
-            <div class="nano">
-                    <div class="nano-content">
-                            <a href="#" class="mobile-close visible-xs">
-                                    Collapse <i class="fa fa-chevron-right"></i>
-                            </a>
-
-                            <div class="sidebar-right-wrapper">
-
-                                    <div class="sidebar-widget widget-calendar">
-                                            <h6>Upcoming Tasks</h6>
-                                            <div data-plugin-datepicker data-plugin-skin="dark" ></div>
-
-                                    </div>
-
-
-
-                            </div>
-                    </div>
-            </div>
-    </aside>
-                                                                        
                                                                         
     <div class="modal fade" id="confirmSuppression" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -130,25 +103,23 @@
                                 <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
                         </div>
                         <div class="modal-body">
-                                 <p>Etes vous sur de vouloir supprimer ce véhicule?</p>
+                                 <p>Etes vous sur de vouloir supprimer cet utilisateur?</p>
                         </div>
                         <div class="modal-footer">
-                            <form method="post" action="${pageContext.request.contextPath}/supprimerVehicule">
-                                <input type="hidden" name="id" />
+                            <form method="post" action="${pageContext.request.contextPath}/supprimerUtilisateur">
+                                <input type="text" name="id" />
                             
                                 <input type="submit" class="btn btn-primary" Value="Confirmer" />
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </form>
                         </div>
                 </div>
         </div>
-    </div>
-        
-        <jsp:include page="includes/footer.jsp"/>
+    </div>        <jsp:include page="includes/footer.jsp"/>
         <script>
         $('#confirmSuppression').on('show.bs.modal', function(e) {
-            var vehicule = $(e.relatedTarget).data('vehicule-id');
-            $(e.currentTarget).find('input[name="id"]').val(vehicule);
+            var utilisateur = $(e.relatedTarget).data('utilisateur-id');
+            $(e.currentTarget).find('input[name="id"]').val(utilisateur);
         });
         </script>
 </html>

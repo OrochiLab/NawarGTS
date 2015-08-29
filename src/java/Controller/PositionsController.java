@@ -7,14 +7,19 @@ package Controller;
 
 import Dao.GroupeDAO;
 import Dao.PositionDAO;
+import Dao.VehiculeDAO;
 import Metier.Groupe;
 import Metier.Position;
 import Metier.Vehicule;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,7 +34,8 @@ public class PositionsController {
     private GroupeDAO groupeDao;
     @Autowired
     private PositionDAO positionDao;
-    
+    @Autowired
+    private VehiculeDAO vehiculeDao;
     
     
     @RequestMapping("/emplacements")
@@ -53,8 +59,6 @@ public class PositionsController {
         
         for(Groupe groupe:  liste)
         {
-            
-            
             for(Vehicule vehicule : groupe.getVehicules())
             {
                 vehicule.setGroupe(null);
@@ -69,5 +73,60 @@ public class PositionsController {
         }
         
         return liste;
+    }
+    
+    
+    @RequestMapping(value="json/positions/save",method = RequestMethod.POST)
+    @ResponseBody
+    public Coordonnes saveCoordonnes(@RequestBody Coordonnes coor)
+    {
+        
+        Position pos = new Position();
+        pos.setLatitude(coor.getLatitude());
+        pos.setLongitude(coor.getLongitude());
+        pos.setVehicule(vehiculeDao.getById(coor.getIdentifiant()));
+        pos.setTimestamp(new Date());
+        System.out.println("Réception position : " +pos);
+        positionDao.saveOrUpdate(pos);
+        return coor;
+    }
+    
+    
+    private static class Coordonnes{
+        
+        private int identifiant;
+        private double latitude;
+        private double longitude;
+
+        public int getIdentifiant() {
+            return identifiant;
+        }
+
+        public void setIdentifiant(int identifiant) {
+            this.identifiant = identifiant;
+        }
+
+        public double getLatitude() {
+            return latitude;
+        }
+
+        public void setLatitude(double latitude) {
+            this.latitude = latitude;
+        }
+
+        public double getLongitude() {
+            return longitude;
+        }
+
+        public void setLongitude(double longitude) {
+            this.longitude = longitude;
+        }
+
+        @Override
+        public String toString() {
+            return "Coordonnes{" + "identifiant=" + identifiant + ", latitude=" + latitude + ", longitude=" + longitude + '}';
+        }
+        
+        
     }
 }

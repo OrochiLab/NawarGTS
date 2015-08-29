@@ -8,11 +8,12 @@
 
 
 <div class="inner-wrapper">
-    <jsp:include page="includes/nav.jsp" />
-
+    <jsp:include page="includes/nav.jsp" >
+            <jsp:param name="bloc" value="administration" />
+        </jsp:include>
         <section role="main" class="content-body">
             <header class="page-header">
-                <h2>Ajouter un chauffeur</h2>
+                <h2>Editer un chauffeur</h2>
 
                 <div class="right-wrapper pull-right">
                     <ol class="breadcrumbs">
@@ -50,7 +51,7 @@
 
                                             </div>
 
-                                            <h2 class="panel-title">Ajouter un chauffeur</h2>
+                                            <h2 class="panel-title">Editer un chauffeur</h2>
                                     </header>
                                     <div class="panel-body">
                                             <c:if test="${(not empty chauffeur) && chauffeur.id!=0}">

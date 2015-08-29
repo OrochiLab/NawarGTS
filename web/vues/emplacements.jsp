@@ -23,8 +23,9 @@
     </style>
 
 			<div class="inner-wrapper">
-                            <jsp:include page="includes/nav.jsp" />
-
+                            <jsp:include page="includes/nav.jsp" >
+                                <jsp:param name="bloc" value="maps" />
+                            </jsp:include>
 				<section role="main" class="content-body">
 					<header class="page-header">
 						<h2>Emplacements</h2>
@@ -292,11 +293,11 @@
                         (function(indice){
                             
                             map.drawRoute({
-                                origin: [markers[index_marker].getPosition().lat(),markers[index_marker].getPosition().lng()],
-                                destination: [positions[indice].getPosition().lat(),positions[indice].getPosition().lng()],
+                                origin:[positions[indice].getPosition().lat(),positions[indice].getPosition().lng()],
+                                destination:[markers[index_marker].getPosition().lat(),markers[index_marker].getPosition().lng()] ,
                                 travelMode: 'driving',
                                 strokeColor: '#131540',
-                                strokeOpacity: 00,
+                                strokeOpacity: 0,
                                 strokeWeight: 6,
                                 callback: function (e) {
                                         //var time = 0;
@@ -451,8 +452,8 @@
                     var vehicule_destination = Number.parseInt($("#name_vehicule_tracer").val());
                     var index_point = Number.parseInt($("#index_point").val());
                     map.drawRoute({
-                                origin: [markers[index_point].getPosition().lat(),markers[index_point].getPosition().lng()],
-                                destination: [positions[vehicule_destination].getPosition().lat(),positions[vehicule_destination].getPosition().lng()],
+                                origin: [positions[vehicule_destination].getPosition().lat(),positions[vehicule_destination].getPosition().lng()],
+                                destination: [markers[index_point].getPosition().lat(),markers[index_point].getPosition().lng()] ,
                                 travelMode: 'driving',
                                 strokeColor: 'green',
                                 strokeOpacity: 1,

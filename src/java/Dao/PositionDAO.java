@@ -7,6 +7,7 @@ package Dao;
 
 import Metier.Position;
 import Metier.Vehicule;
+import java.util.Date;
 import java.util.List;
 
 
@@ -22,5 +23,5 @@ public interface PositionDAO {
     public void remove(int id);
     public List<Position> getPositionsByVehicle(Vehicule vehicule);
     public Position getLastPositionByVehicle(Vehicule vehicule);
-    
+    public List<Position> getPositionByVehiculeBetweenDates(Vehicule vehicule,Date debut,Date fin);
 }

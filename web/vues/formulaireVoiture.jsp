@@ -8,8 +8,9 @@
 
 
 <div class="inner-wrapper">
-    <jsp:include page="includes/nav.jsp" />
-
+    <jsp:include page="includes/nav.jsp" >
+            <jsp:param name="bloc" value="administration" />
+        </jsp:include>
         <section role="main" class="content-body">
             <header class="page-header">
                 <h2>Editer un véhicule</h2>
@@ -124,7 +125,12 @@
 
                                                 </div>
                                             </div>
-
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label">Mot de passe</label>
+                                                <div class="col-md-6">
+                                                        <input type="password" name="password" class="form-control" value="${vehicule.password}">
+                                                </div>
+                                            </div>        
                                     </div>
                                     <footer class="panel-footer">
                                         <div class="row">

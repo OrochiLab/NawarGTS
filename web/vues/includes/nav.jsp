@@ -22,12 +22,17 @@
 									</li>
 									
 									
-									<li class="nav-parent">
+									<li class="nav-parent ${(param.bloc=='administration')?'nav-expanded':''}">
 										<a>
                                                                                     <i class="fa fa-tasks" aria-hidden="true"></i>
                                                                                     <span>Administration</span>
 										</a>
 										<ul class="nav nav-children">
+                                                                                        <li>
+												<a href="${pageContext.request.contextPath}/utilisateurs">
+													 Utilisateurs
+												</a>
+											</li>
 											<li>
 												<a href="${pageContext.request.contextPath}/vehicules">
 													 Vehicules
@@ -51,7 +56,7 @@
 										</ul>
 									</li>
 									
-									<li class="nav-parent">
+									<li class="nav-parent ${(param.bloc=='maps')?'nav-expanded':''}">
 										<a>
 											<i class="fa fa-map-marker" aria-hidden="true"></i>
 											<span>Maps</span>
@@ -62,7 +67,11 @@
 													 Emplacements/Positions
 												</a>
 											</li>
-											
+											<li>
+												<a href="${pageContext.request.contextPath}/trajets">
+													 Trajets
+												</a>
+											</li>
 											
 										</ul>
 									</li>

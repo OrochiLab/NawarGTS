@@ -6,7 +6,9 @@
 
 
     <div class="inner-wrapper">
-        <jsp:include page="includes/nav.jsp" />
+        <jsp:include page="includes/nav.jsp" >
+            <jsp:param name="bloc" value="administration" />
+        </jsp:include>
 
             <section role="main" class="content-body">
                     <header class="page-header">

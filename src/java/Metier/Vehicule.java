@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 /**
@@ -29,7 +30,7 @@ public class Vehicule {
     private int id;
     @Column(name="intitule",nullable = false,length=50)
     private String intitule;
-    @Column(name="matricule",length=20)
+    @Column(name="matricule",length=20,unique = true)
     @Size(min = 6,max = 20,message="Le matricule doit avoir une taille entre 6 et 20 caractères !")
     private String matricule;
     @Column(length=30)
@@ -38,6 +39,8 @@ public class Vehicule {
     private String modele;
     @Column
     private boolean active;
+    @Column
+    private String password;
     @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     @JoinColumn(name = "groupe_id",nullable = false)
     private Groupe groupe;
@@ -46,7 +49,19 @@ public class Vehicule {
     @JoinColumn(name = "chauffeur_id")
     private Chauffeur chauffeur;
     
+    @Transient
+    private Position position_actuelle;
 
+    public Position getPosition_actuelle() {
+        return position_actuelle;
+    }
+
+    public void addPosition_actuelle(Position position_actuelle) {
+        this.position_actuelle = position_actuelle;
+    }
+
+    
+    
     public int getId() {
         return id;
     }
@@ -109,6 +124,19 @@ public class Vehicule {
 
     public void setChauffeur(Chauffeur chauffeur) {
         this.chauffeur = chauffeur;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicule{" + "id=" + id + ", intitule=" + intitule + ", matricule=" + matricule + ", type=" + type + ", modele=" + modele + ", active=" + active + '}';
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     

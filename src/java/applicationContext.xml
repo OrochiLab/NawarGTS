@@ -27,8 +27,6 @@
                 <value>Metier.Vehicule</value>
                 <value>Metier.PointInteret</value>
                 <value>Metier.Position</value>
-                <value>Metier.Permission</value>
-                <value>Metier.CategoriePermission</value>
                 
             </list>
         </property>

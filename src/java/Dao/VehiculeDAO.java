@@ -18,4 +18,5 @@ public interface VehiculeDAO {
     public Vehicule getById(int id);
     public void saveOrUpdate(Vehicule vehicule);
     public void remove(int id);
+    public Vehicule getVehiculeByPass(String matricule,String password);
 }

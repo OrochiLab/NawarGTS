@@ -7,6 +7,7 @@ package Dao;
 
 import Metier.Position;
 import Metier.Vehicule;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -84,6 +85,20 @@ public class PositionDAOImpl implements PositionDAO{
                 
         session.close();
         return position;
+    }
+
+    @Override
+    public List<Position> getPositionByVehiculeBetweenDates(Vehicule vehicule, Date debut, Date fin) {
+        Session session = factory.openSession();
+        session.beginTransaction();
+        
+        List<Position> liste = session.createQuery("from Position where vehicule.id=:id and (timestamp between :debut and :fin) order by timestamp asc")
+                .setParameter("id",vehicule.getId())
+                .setParameter("debut",debut)
+                .setParameter("fin",fin)
+                .list();
+        session.close();
+        return liste;
     }
     
 }

@@ -116,7 +116,7 @@
 								<img src="${pageContext.request.contextPath}/vues/assets/images/!logged-user.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
 							</figure>
 							<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
-								<span class="name">Morabit Mouad</span>
+                                                            <span class="name">${sessionScope.user.nom} ${sessionScope.user.prenom}</span>
 								<span class="role">Administrateur</span>
 							</div>
 			
@@ -130,7 +130,7 @@
 									<a role="menuitem" tabindex="-1" href="#"><i class="fa fa-user"></i> Mon profil</a>
 								</li>
 								<li>
-									<a role="menuitem" tabindex="-1" href="#"><i class="fa fa-power-off"></i> Se deconnecter</a>
+                                                                    <a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/deconnexion"><i class="fa fa-power-off"></i> Se deconnecter</a>
 								</li>
 							</ul>
 						</div>
